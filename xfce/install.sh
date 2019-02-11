@@ -55,7 +55,7 @@ if [ "$_notebook" == "s" ]; then # notebook
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
 	pacman -S xf86-input-synaptics xf86-input-libinput xfce4-battery-plugin --noconfirm; sleep 1
 	echo -e "${_g}==> Configurando tap-to-click${_o}"; sleep 1
-	curl -s -o /etc/X11/config/30-touchpad.conf 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/config/touchpad'
+	curl -s -o /etc/X11/config/30-touchpad.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/touchpad'
 elif [ "$_virtualbox" == "s" ]; then # virtualbox
 	echo -e "${_g}==> Guest Utils Virtuabox${_o}"; sleep 1
 	pacman -S virtualbox-guest-utils --noconfirm
@@ -103,11 +103,11 @@ localectl set-x11-keymap br abnt2
 
 # keyboard
 echo -e "${_g}==> Criando arquivo de configuração para keyboard br abnt${_o}"; sleep 1
-curl -s -o /etc/X11/config/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/config/keyboard'
+curl -s -o /etc/X11/config/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/keyboard'
 
 # removendo borda dos ícones no desktop
 echo -e "${_g}===>Removendo borda dos ícones do desktop${_o}"; sleep 1
-curl -s -o /home/${_user}/.gtkrc-2.0 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/config/icon-desktop'
+curl -s -o /home/${_user}/.gtkrc-2.0 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/icon-desktop'
 
 # configurando lightdm
 echo -e "${_g}==> Configurando gerenciador de login lightdm${_o}"; sleep 1
