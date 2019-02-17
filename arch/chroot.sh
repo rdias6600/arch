@@ -71,7 +71,7 @@ else
 	grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
-if [ "$_notebook" == "s"]; then
+if [ "$_notebook" == "s" ]; then
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
 	pacman -S wireless_tools wpa_supplicant wpa_actiond acpi acpid --noconfirm
 fi
