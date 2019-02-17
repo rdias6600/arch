@@ -71,6 +71,11 @@ else
 	grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
+if [ "$_notebook" == "s"]; then
+	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
+	pacman -S wireless_tools wpa_supplicant wpa_actiond acpi acpid --noconfirm
+fi
+
 # password
 echo -e "${_g}==> Criando senha root${_o}"
 passwd << EOF
@@ -86,11 +91,6 @@ $_puser
 $_puser
 EOF
 sleep 0.5
-
-if [ "$_notebook" == "s"]; then
-	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
-	pacman -S wireless_tools wpa_supplicant wpa_actiond acpi acpid --noconfirm; sleep 1
-fi
 
 echo -e "${_g}==> mkinitcpio${_o}"
 mkinitcpio -p linux
