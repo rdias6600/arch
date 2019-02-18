@@ -53,7 +53,7 @@ pacman -Syu
 
 # no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
 echo -e "${_g}==> Instalando dhclient${_o}"
-pacman -S dhclient dhcpcd dialog --noconfirm
+pacman -S dhclient dhcpcd dialog wget --noconfirm
 
 # grub configuration
 if [[ "$_uefi" != "" ]]; then
