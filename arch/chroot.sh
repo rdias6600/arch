@@ -56,7 +56,7 @@ echo -e "${_g}==> Instalando dhclient${_o}"
 pacman -S dhclient dhcpcd dialog --noconfirm
 
 # grub configuration
-if [ "$_uefi" != "" ]; then
+if [[ "$_uefi" != "" ]]; then
 	echo -e "${_g}==> bootctl UEFI mode${_o}"
 	bootctl --path=/boot install
 	echo -e "default arch\ntimeout 5\n" > /boot/loader/loader.conf
@@ -65,14 +65,14 @@ else
 	echo -e "${_g}==> Instalando e Configurando o GRUB${_o}"
 	pacman -S grub --noconfirm
 	# dual boot
-	[ "$_dualboot" == "s" ] && { pacman -S os-prober --noconfirm; }
+	[[ "$_dualboot" == "s" ]] && { pacman -S os-prober --noconfirm; }
 	grub-install --target=i386-pc --recheck /dev/sda
 	cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 	grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
-if [ "$_notebook" == "s" ]; then
-	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
+if [[ "$_notebook" == "s" ]]; then
+	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 30
 	pacman -S wireless_tools wpa_supplicant wpa_actiond acpi acpid --noconfirm
 fi
 

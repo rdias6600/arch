@@ -127,14 +127,15 @@ else
 fi
 
 echo "--------------------------------"
+echo
 
-if [ "$_dualboot" == "s" ]; then
+if [[ "$_dualboot" == "s" ]]; then
 	echo -e " ${_g}DUAL BOOT${_o} = SIM\n"
 else
 	echo -e " ${_g}DUAL BOOT${_o} = NAO\n"
 fi
 
-if [ "$_notebook" == "s" ]; then
+if [[ "$_notebook" == "s" ]]; then
 	echo -e " ${_g}NOTEBOOK${_o} = SIM\n"
 else
 	echo -e " ${_g}NOTEBOOK${_o} = NAO\n"
@@ -154,7 +155,7 @@ fi
 echo -e "\n\n ${_n}Continuando com a instalação ...${_o}\n"; sleep 1
 
 # swap
-if [ "$_swap" != "" ]; then
+if [[ "$_swap" != "" ]]; then
 	echo -e "${_g}==> Criando e ligando Swap${_o}"; sleep 1
 	mkswap $_swap && swapon $_swap
 fi
@@ -164,13 +165,13 @@ echo -e "\n${_g}==> Formatando e Montando Root${_o}"; sleep 1
 mkfs.ext4 -F $_root && mount $_root /mnt
 
 # home
-if [ "$_home" != "" ]; then
+if [[ "$_home" != "" ]]; then
 	echo -e "\n${_g}==> Formatando, Criando e Montando Home${_o}"; sleep 1
 	mkfs.ext4 -F $_home && mkdir /mnt/home && mount $_home /mnt/home	
 fi
 
 # efi
-if [ "$_uefi" != "" ]; then
+if [[ "$_uefi" != "" ]]; then
 	echo -e "${_g}Formatando, Criando e Montando EFI${_o}"; sleep 1
 	mkfs.fat -F32 $_uefi && mkdir /mnt/boot && mount $_uefi /mnt/boot
 fi

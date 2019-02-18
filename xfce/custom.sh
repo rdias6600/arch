@@ -9,18 +9,18 @@ sudo pacman -S galculator flatpak engrampa go conky --noconfirm
 
 # instalar flatpak
 echo -e "\n${_y}Instalando programas flatpak\n${_e}"
-flatpak install com.discordapp.Discord 			\
-				org.telegram.desktop 			\
-				org.remmina.Remmina 			\
-				org.videolan.VLC 				\
-				org.filezillaproject.Filezilla 	\
-				com.anydesk.Anydesk 			\
+flatpak install com.discordapp.Discord 				\
+				org.telegram.desktop 				\
+				org.remmina.Remmina 				\
+				org.videolan.VLC 					\
+				org.filezillaproject.Filezilla 		\
+				com.anydesk.Anydesk 				\
 				com.valvesoftware.Steam
 
 # instalar sublime-text
 echo -e "\n${_y}Instalando sublime-text\n${_e}"
-curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg; sleep 1
-echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf; sleep 1
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 sudo pacman -Syu sublime-text
 
 # instalar AUR Helper "yay"

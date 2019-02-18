@@ -36,9 +36,9 @@ STI
 
 echo -e "\nVocê está instalando xfce com suporte de drivers para:\n"
 
-if [ "$_notebook" == "s" ]; then
+if [[ "$_notebook" == "s" ]]; then
 	echo -e "${_am}Notebook${_o}"
-elif [ "$_virtualbox" == "s" ]; then
+elif [[ "$_virtualbox" == "s" ]]; then
 	echo -e "${_am}VM (máquina virtual)${_o}"
 else
 	echo -e "${_am}PC${_o}"
@@ -51,12 +51,12 @@ echo -en "\n${_g}Digite s/S para continuar ou n/N para cancelar: ${_o}:${_w} "; 
 echo -e "\n${_g}==>Instalando xorg${_o}"; sleep 1
 pacman -S xorg-xinit xorg-server xf86-input-keyboard xf86-input-mouse xf86-video-vesa --noconfirm
 
-if [ "$_notebook" == "s" ]; then # notebook
+if [[ "$_notebook" == "s" ]]; then # notebook
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
 	pacman -S xf86-input-synaptics xf86-input-libinput xfce4-battery-plugin --noconfirm; sleep 1
 	echo -e "${_g}==> Configurando tap-to-click${_o}"; sleep 1
 	curl -s -o /etc/X11/config/30-touchpad.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/touchpad'
-elif [ "$_virtualbox" == "s" ]; then # virtualbox
+elif [[ "$_virtualbox" == "s" ]]; then # virtualbox
 	echo -e "${_g}==> Guest Utils Virtuabox${_o}"; sleep 1
 	pacman -S virtualbox-guest-utils --noconfirm
 fi
@@ -67,7 +67,7 @@ pacman -S xfce4 lightdm lightdm-gtk-greeter --noconfirm
 
 # goodies
 echo -e "${_g}==> I nstalando goodies${_o}"; sleep 1
-pacman thunar-archive-plugin xfce4-mount-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin --noconfirm
+pacman -S thunar-archive-plugin xfce4-mount-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin --noconfirm
 
 # firefox
 # echo -e "${_g}==> Instalando firefox${_o}"; sleep 1
