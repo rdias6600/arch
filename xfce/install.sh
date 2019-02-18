@@ -55,7 +55,7 @@ if [[ "$_notebook" == "s" ]]; then # notebook
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
 	pacman -S xf86-input-synaptics xf86-input-libinput xfce4-battery-plugin --noconfirm; sleep 1
 	echo -e "${_g}==> Configurando tap-to-click${_o}"; sleep 1
-	curl -s -o /etc/X11/config/30-touchpad.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/touchpad'
+	curl -s -o /etc/X11/xorg.conf.d/30-touchpad.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/touchpad'
 elif [[ "$_virtualbox" == "s" ]]; then # virtualbox
 	echo -e "${_g}==> Guest Utils Virtuabox${_o}"; sleep 1
 	pacman -S virtualbox-guest-utils --noconfirm
