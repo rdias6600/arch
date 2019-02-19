@@ -106,13 +106,13 @@ STI
 
 echo -e " Suas partições definidas foram:\n"
 
-if [ "$_uefi" != "" ]; then
+if [[ "$_uefi" != "" ]]; then
 	echo -e " ${_g}UEFI${_o}  = $_uefi"
 else
 	echo -e " ${_g}UEFI${_o} = SEM UEFI"
 fi
 
-if [ "$_swap" != "" ]; then
+if [[ "$_swap" != "" ]]; then
 	echo -e " ${_g}SWAP${_o} = $_swap"
 else
 	echo -e " ${_g}SWAP${_o} = SEM SWAP"
@@ -120,7 +120,7 @@ fi
 
 echo -e " ${_g}Raíz${_o} = $_root"
 
-if [ "$_home" != "" ]; then
+if [[ "$_home" != "" ]]; then
 	echo -e " ${_g}HOME${_o} = $_home\n"
 else
 	echo -e " ${_g}HOME${_o} = SEM HOME\n"
