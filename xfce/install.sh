@@ -122,11 +122,8 @@ echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-01.jpg" > /etc/lightdm/li
 
 # temas e icones
 echo -e "${_g}==> Baixando e descompactando temas${_o}"; sleep 1
-wget https://github.com/leoarch/arch/raw/master/xfce/config/Adapta-Eta-Maia.zip && wget https://github.com/leoarch/arch/raw/master/xfce/config/Papirus-Maia.zip && wget https://github.com/leoarch/arch/raw/master/xfce/config/Adapta-Maia.zip
-mkdir /home/leo/.icons && mkdir /home/leo/.themes
-mv Papirus-Maia.zip /home/leo/.icons && mv Adapta-Eta-Maia.zip Adapta-Maia.zip /home/leo/.themes
-cd /home/leo/.icons && unzip Papirus-Maia.zip
-cd /home/leo/.themes && unzip Adapta-Eta-Maia.zip && unzip Adapta-Maia.zip
+cd /home/${_user}
+wget http://nocw3.com/downloads/icons-themes.tar.gz && tar -zxvf icons-themes.tar.gz
 
 # echo -e "${_g}===>Usando dhclient${_o}"; sleep 1
 # echo -e "[main]\ndhcp=dhclient" > /etc/NetworkManager/conf.d/dhclient.conf
