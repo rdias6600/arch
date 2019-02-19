@@ -55,7 +55,7 @@ if [[ "$_notebook" == "s" ]]; then # notebook
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
 	pacman -S xf86-input-synaptics xf86-input-libinput xfce4-battery-plugin --noconfirm; sleep 1
 	echo -e "${_g}==> Configurando tap-to-click${_o}"; sleep 1
-	curl -s -o /etc/X11/config/30-touchpad.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/touchpad'
+	curl -s -o /etc/X11/xorg.conf.d/30-touchpad.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/touchpad'
 elif [[ "$_virtualbox" == "s" ]]; then # virtualbox
 	echo -e "${_g}==> Guest Utils Virtuabox${_o}"; sleep 1
 	pacman -S virtualbox-guest-utils --noconfirm
@@ -65,7 +65,7 @@ fi
 echo -e "${_g}==> Instalando xfce e lightdm${_o}"; sleep 1
 pacman -S xfce4 lightdm lightdm-gtk-greeter --noconfirm
 
-# goodies
+# goodies xfce
 echo -e "${_g}==> Instalando goodies${_o}"; sleep 1
 pacman -S thunar-archive-plugin xfce4-mount-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin --noconfirm
 
@@ -87,11 +87,11 @@ pacman -S networkmanager network-manager-applet --noconfirm
 
 # essenciais
 echo -e "${_g}==> Instalando fonte, xterm e lixeira${_o}"; sleep 1
-pacman -S sudo ttf-dejavu xterm gvfs --noconfirm # gvfs = lixeira
+pacman -S sudo noto-fonts xterm gvfs --noconfirm # gvfs = lixeira
 
 # tema opcional
-echo -e "${_g}==> Instalando temas${_o}"; sleep 1
-pacman -S numix-gtk-theme papirus-icon-theme --noconfirm
+# echo -e "${_g}==> Instalando temas${_o}"; sleep 1
+# pacman -S numix-gtk-theme papirus-icon-theme --noconfirm
 
 # criar diretórios
 echo -e "${_g}==> Criando diretórios${_o}"; sleep 1
@@ -107,7 +107,7 @@ localectl set-x11-keymap br abnt2
 
 # keyboard
 echo -e "${_g}==> Criando arquivo de configuração para keyboard br abnt${_o}"; sleep 1
-curl -s -o /etc/X11/config/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/keyboard'
+curl -s -o /etc/X11/xorg.conf.d/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/keyboard'
 
 # removendo borda dos ícones no desktop
 echo -e "${_g}===>Removendo borda dos ícones do desktop${_o}"; sleep 1
@@ -119,6 +119,13 @@ sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm
 sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
 curl -s -o /usr/share/pixmaps/arch-01.jpg 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/images/arch-01.jpg'
 echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-01.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
+
+# tema e icones
+echo -e "${_g}==> Baixando e descompactando temas${_o}"; sleep 1
+wget https://github.com/leoarch/arch/raw/master/xfce/config/Adapta-Eta-Maia.zip && wget https://github.com/leoarch/arch/raw/master/xfce/config/Papirus-Maia.zip
+mkdir /home/${_user}/.icons && mkdir /home/${_user}/.themes
+unzip Adapta-Eta-Maia.zip /home/${_user}/.icons/ && unzip Papirus-Maia.zip /home/${_user}/.themes/
+rm Adapta-Eta-Maia.zip && rm Papirus-Maia.zip
 
 # echo -e "${_g}===>Usando dhclient${_o}"; sleep 1
 # echo -e "[main]\ndhcp=dhclient" > /etc/NetworkManager/conf.d/dhclient.conf
