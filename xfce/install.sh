@@ -120,12 +120,13 @@ sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
 curl -s -o /usr/share/pixmaps/arch-01.jpg 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/images/arch-01.jpg'
 echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-01.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
 
-# tema e icones
+# temas e icones
 echo -e "${_g}==> Baixando e descompactando temas${_o}"; sleep 1
-wget https://github.com/leoarch/arch/raw/master/xfce/config/Adapta-Eta-Maia.zip && wget https://github.com/leoarch/arch/raw/master/xfce/config/Papirus-Maia.zip
-mkdir /home/${_user}/.icons && mkdir /home/${_user}/.themes
-unzip Adapta-Eta-Maia.zip /home/${_user}/.icons/ && unzip Papirus-Maia.zip /home/${_user}/.themes/
-rm Adapta-Eta-Maia.zip && rm Papirus-Maia.zip
+wget https://github.com/leoarch/arch/raw/master/xfce/config/Adapta-Eta-Maia.zip && wget https://github.com/leoarch/arch/raw/master/xfce/config/Papirus-Maia.zip && wget https://github.com/leoarch/arch/raw/master/xfce/config/Adapta-Maia.zip
+mkdir /home/leo/.icons && mkdir /home/leo/.themes
+mv Papirus-Maia.zip /home/leo/.icons && mv Adapta-Eta-Maia.zip Adapta-Maia.zip /home/leo/.themes
+cd /home/leo/.icons && unzip Papirus-Maia.zip
+cd /home/leo/.themes && unzip Adapta-Eta-Maia.zip && unzip Adapta-Maia.zip
 
 # echo -e "${_g}===>Usando dhclient${_o}"; sleep 1
 # echo -e "[main]\ndhcp=dhclient" > /etc/NetworkManager/conf.d/dhclient.conf
