@@ -48,34 +48,6 @@ echo -e "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers
 echo -e "${_g}==> Gerando Locale${_o}"
 locale-gen
 
-echo -e "${_g}==> Sincronizando a base de dados${_o}"
-pacman -Syu
-
-# no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
-echo -e "${_g}==> Instalando dhclient${_o}"
-pacman -S dhclient dhcpcd dialog wget --noconfirm
-
-# grub configuration
-if [[ "$_uefi" != "" ]]; then
-	echo -e "${_g}==> bootctl UEFI mode${_o}"
-	bootctl --path=/boot install
-	echo -e "default arch\ntimeout 5\n" > /boot/loader/loader.conf
-	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=${_root} rw\n" > /boot/loader/entries/arch.conf
-else
-	echo -e "${_g}==> Instalando e Configurando o GRUB${_o}"
-	pacman -S grub --noconfirm
-	# dual boot
-	[[ "$_dualboot" == "s" ]] && { pacman -S os-prober --noconfirm; }
-	grub-install --target=i386-pc --recheck /dev/sda
-	cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
-	grub-mkconfig -o /boot/grub/grub.cfg
-fi
-
-if [[ "$_notebook" == "s" ]]; then
-	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
-	pacman -S wireless_tools wpa_supplicant wpa_actiond acpi acpid --noconfirm
-fi
-
 # password
 echo -e "${_g}==> Criando senha root${_o}"
 passwd << EOF
@@ -91,6 +63,34 @@ $_puser
 $_puser
 EOF
 sleep 0.5
+
+echo -e "${_g}==> Sincronizando a base de dados${_o}"; sleep 1
+pacman -Syu --noconfirm
+
+# no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
+echo -e "${_g}==> Instalando dhclient${_o}"
+pacman -S dhclient dhcpcd dialog wget --noconfirm
+
+# grub configuration
+if [[ "$_uefi" != "" ]]; then
+	echo -e "${_g}==> bootctl UEFI mode${_o}"
+	bootctl --path=/boot install
+	echo -e "default arch\ntimeout 5\n" > /boot/loader/loader.conf
+	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=${_root} rw\n" > /boot/loader/entries/arch.conf
+else
+	# echo -e "${_g}==> Instalando e Configurando o GRUB${_o}"
+	# pacman -S grub --noconfirm
+	# dual boot
+	# [[ "$_dualboot" == "s" ]] && { pacman -S os-prober --noconfirm; }
+	# grub-install --target=i386-pc --recheck /dev/sda
+	# cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+	# grub-mkconfig -o /boot/grub/grub.cfg
+fi
+
+if [[ "$_notebook" == "s" ]]; then
+	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
+	pacman -S wireless_tools wpa_supplicant wpa_actiond acpi acpid --noconfirm
+fi
 
 echo -e "${_g}==> mkinitcpio${_o}"
 mkinitcpio -p linux
