@@ -13,7 +13,6 @@ flatpak install com.discordapp.Discord 				\
 				org.telegram.desktop 				\
 				org.remmina.Remmina 				\
 				org.videolan.VLC 					\
-				org.filezillaproject.Filezilla 		\
 				com.anydesk.Anydesk 				\
 				com.valvesoftware.Steam
 
@@ -31,7 +30,7 @@ makepkg -si
 
 # instalar programas AUR
 echo -e "\n${_y}Instalando google-chrome\n${_e}"
-yay -S google-chrome --noconfirm
+yay -S google-chrome genymotion linux-headers --noconfirm
 
 
 
