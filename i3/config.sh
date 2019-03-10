@@ -11,23 +11,13 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-################
-### i3config ###
-################
-
-sudo pacman -S flatpak git leafpad rofi flameshot transmission-cli go feh xorg-xinput  # xorg-xinput
 yay -S google-chrome --noconfirm
 
-###########
-
-# sublime-text
-curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg; sleep 1
-echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf; sleep 1
-sudo pacman -Syu sublime-text --noconfirm
-
 ################
 ### i3config ###
 ################
+
+sed -i 's/status_command i3status/status_command i3blocks/' ~/.config/i3/config
 
 # i3blocks
 #sed -i 's/status_command i3status/status_command i3blocks -c ~\/.config\/i3\/i3blocks\/i3blocks.conf\n\tcolors {\n\t\tseparator #969896\n\t\tbackground #1d1f21\n\t\tstatusline #c5c8c6\n\t\tfocused_workspace #81a2be #81a2be #1d1f21\n\t\tactive_workspace#373b41 #373b41 #ffffff\n\t\tinactive_workspace#282a2e #282a2e #969896\n\t\turgent_workspace#cc6666 #cc6666 #ffffff\n\t}/' ~/.config/i3/config
@@ -42,7 +32,7 @@ sudo pacman -Syu sublime-text --noconfirm
 echo -e '# gaps\nfor_window [class="^.*"] border pixel 2\ngaps inner 10\ngaps outer 10\n' >> ~/.config/i3/config
 
 # google-chrome
-echo -e '\n\n# chrome\nbindsym F1 exec --no-startup-id google-chrome-stable\nfor_window [class="chrome"] move to workspace $ws2\nassign [class="^chrome"] $ws2\n' >> ~/.config/i3/config
+echo -e '\n\n# chrome\nbindsym $mod+Shift+b exec --no-startup-id google-chrome-stable\nfor_window [class="chrome"] move to workspace $ws2\nassign [class="^chrome"] $ws2\n' >> ~/.config/i3/config
 
 # flameshot
 mkdir -p ~/Screenshots
@@ -60,8 +50,8 @@ echo -e '# mouse acceleration\nexec --no-startup-id xinput --set-prop 8 'libinpu
 # feh
 mkdir -p ~/Imagens && mkdir -p ~/Imagens/wallpaper
 cd ~/Imagens/wallpaper/
-wget https://raw.githubusercontent.com/leoarch/arch-linux/master/i3/images/matrix-5.jpg
-echo -e '# feh\nexec --no-startup-id feh --bg-scale /home/leo/Imagens/wallpaper/matrix-5.jpg\n' >> ~/.config/i3/config
+wget https://raw.githubusercontent.com/leoarch/arch/master/i3/images/matrix-6.png
+echo -e '# feh\nexec --no-startup-id feh --bg-scale /home/leo/Imagens/wallpaper/matrix-6.png\n' >> ~/.config/i3/config
 
 #sudo ln -s /opt/sublime_text/sublime_text /usr/bin/
 #obs
