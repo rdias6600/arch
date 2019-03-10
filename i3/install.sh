@@ -53,11 +53,11 @@ elif [[ "$_virtualbox" == "s" ]]; then # virtualbox
 	pacman -S virtualbox-guest-utils --noconfirm
 fi
 
+echo -e "${_g}==> Pacotes essenciais${_e}"; sleep 1
+pacman -S terminus-font termite gvfs sudo --noconfirm
+
 echo -e "${_g}==> Instalando i3${_e}"; sleep 1
 pacman -S i3-gaps i3blocks --noconfirm
-
-echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades
-pacman -S cmus ranger terminus-font termite gvfs sudo engrampa calc flatpak git leafpad rofi flameshot transmission-cli go feh xorg-xinput --noconfirm
 
 # echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
 # pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
@@ -106,7 +106,6 @@ systemctl enable networkmanager
 
 # bash
 #[[ ! -a /tmp/.X11-unix/X0 ]] && startx
-
 
 cat <<EOI
 ${__A}===

@@ -2,16 +2,12 @@
 
 [ "$EUID" -eq 0 ] && echo -e "${_am}Não rode o script como root!${_o}" && exit 1
 
-###########
-### AUR ###
-###########
+##############
+### PACMAN ###
+##############
 
-sudo pacman -S go --noconfirm
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
-yay -S google-chrome --noconfirm
+echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades xorg-xinput = ver nome do processo
+pacman -S cmus ranger engrampa calc flatpak git leafpad rofi flameshot transmission-cli go feh --noconfirm
 
 ################
 ### i3config ###
@@ -52,6 +48,17 @@ mkdir -p ~/Imagens && mkdir -p ~/Imagens/wallpaper
 cd ~/Imagens/wallpaper/
 wget https://raw.githubusercontent.com/leoarch/arch/master/i3/images/matrix-6.png
 echo -e '# feh\nexec --no-startup-id feh --bg-scale /home/leo/Imagens/wallpaper/matrix-6.png\n' >> ~/.config/i3/config
+
+###########
+### AUR ###
+###########
+
+sudo pacman -S go --noconfirm
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+yay -S google-chrome --noconfirm
 
 #sudo ln -s /opt/sublime_text/sublime_text /usr/bin/
 #obs
