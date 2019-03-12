@@ -123,7 +123,11 @@ echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-01.jpg" > /etc/lightdm/li
 # temas e icones
 echo -e "${_g}==> Baixando e descompactando temas${_o}"; sleep 1
 cd /home/${_user}
-wget http://nocw3.com/downloads/icons-themes.tar.gz && tar -zxvf icons-themes.tar.gz
+mkdir .icons && mkdir .themes
+wget http://nocw3.com/downloads/themes.tar.gz && wget http://nocw3.com/downloads/icons.tar.gz
+tar -zxf themes.tar.gz && tar -zxf icons.tar.gz
+echo -e "${_g}==> Apagando arquivos desnecessários${_o}"; sleep 3
+rm themes.tar.gz icons.tar.gz
 
 # echo -e "${_g}===>Usando dhclient${_o}"; sleep 1
 # echo -e "[main]\ndhcp=dhclient" > /etc/NetworkManager/conf.d/dhclient.conf
