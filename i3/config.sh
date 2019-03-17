@@ -6,14 +6,14 @@
 ### PACMAN ###
 ##############
 
-echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades xorg-xinput = ver nome do processo
-pacman -S cmus ranger engrampa calc flatpak git leafpad rofi flameshot transmission-cli go feh --noconfirm
+echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades xorg-xinput
+pacman -S cmus ranger engrampa calc flatpak git leafpad rofi flameshot transmission-cli go feh xorg-xinput --noconfirm
 
 ################
 ### i3config ###
 ################
 
-sed -i 's/status_command i3status/status_command i3blocks/' ~/.config/i3/config
+#sed -i 's/status_command i3status/status_command i3blocks/' ~/.config/i3/config
 
 # i3blocks
 #sed -i 's/status_command i3status/status_command i3blocks -c ~\/.config\/i3\/i3blocks\/i3blocks.conf\n\tcolors {\n\t\tseparator #969896\n\t\tbackground #1d1f21\n\t\tstatusline #c5c8c6\n\t\tfocused_workspace #81a2be #81a2be #1d1f21\n\t\tactive_workspace#373b41 #373b41 #ffffff\n\t\tinactive_workspace#282a2e #282a2e #969896\n\t\turgent_workspace#cc6666 #cc6666 #ffffff\n\t}/' ~/.config/i3/config

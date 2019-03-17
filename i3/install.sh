@@ -54,17 +54,17 @@ elif [[ "$_virtualbox" == "s" ]]; then # virtualbox
 fi
 
 echo -e "${_g}==> Pacotes essenciais${_e}"; sleep 1
-pacman -S terminus-font termite gvfs sudo --noconfirm
+pacman -S ttf-dejavu terminus-font termite gvfs sudo --noconfirm
 
 echo -e "${_g}==> Instalando i3${_e}"; sleep 1
-pacman -S i3-gaps i3blocks --noconfirm
+pacman -S i3-gaps i3status --noconfirm
 
 # echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
 # pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
 
 # firefox
-# echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
-# pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
+echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
+pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
 
 # audio renove pavucontrol
 echo -e "${_g}==> Instalando audio${_e}"; sleep 1
@@ -102,7 +102,7 @@ echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-01.jpg" > /etc/lightdm/li
 # enable services
 echo -e "${_g}==> Habilitando serviços para serem iniciados com o sistema${_e}"; sleep 1
 systemctl enable lightdm
-systemctl enable networkmanager
+systemctl enable NetworkManager
 
 # bash
 #[[ ! -a /tmp/.X11-unix/X0 ]] && startx
