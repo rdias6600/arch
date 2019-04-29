@@ -91,6 +91,8 @@ echo -en "${_g}Você está instalando em dualboot? Didigte s para (Sim) ou n par
 [[ "$_dualboot" != @(s|n) ]] && { echo -e "\n${_am}Digite uma opção válida! s ou n\n${_o}"; exit 1; }
 export _dualboot
 
+echo
+
 echo -en "${_g}Você está instalando em um notebook? Didigte s para (Sim) ou n para (Não):${_o}${_w} "; read _notebook
 [[ "$_notebook" != @(s|n) ]] && { echo -e "\n${_am}Digite uma opção válida! s ou n\n${_o}"; exit 1; }
 export _notebook
@@ -130,15 +132,15 @@ echo "--------------------------------"
 echo
 
 if [[ "$_dualboot" == "s" ]]; then
-	echo -e " ${_g}DUAL BOOT${_o} = SIM\n"
+	echo -e " ${_g}DUAL BOOT${_o} = SIM"
 else
-	echo -e " ${_g}DUAL BOOT${_o} = NAO\n"
+	echo -e " ${_g}DUAL BOOT${_o} = NAO"
 fi
 
 if [[ "$_notebook" == "s" ]]; then
-	echo -e " ${_g}NOTEBOOK${_o} = SIM\n"
+	echo -e " ${_g}NOTEBOOK${_o} = SIM"
 else
-	echo -e " ${_g}NOTEBOOK${_o} = NAO\n"
+	echo -e " ${_g}NOTEBOOK${_o} = NAO"
 fi
 
 echo "==========================================================="
