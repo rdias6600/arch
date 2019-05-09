@@ -7,7 +7,7 @@
 ##############
 
 echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades xorg-xinput
-pacman -S cmus ranger engrampa calc flatpak git leafpad rofi flameshot transmission-cli go feh xorg-xinput --noconfirm
+pacman -S engrampa calc flatpak git go leafpad rofi flameshot transmission-gtk feh --noconfirm
 
 ################
 ### i3config ###
@@ -56,7 +56,7 @@ echo -e '# feh\nexec --no-startup-id feh --bg-scale /home/leo/Imagens/wallpaper/
 sudo pacman -S go --noconfirm
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -si --noconfirm
 
 yay -S google-chrome --noconfirm
 
