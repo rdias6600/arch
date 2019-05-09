@@ -17,7 +17,7 @@ echo -en "${_g}Você está instalando em uma VM? Didigte S para (Sim) ou N para 
 if [[ "$_vm" == @(s|S) ]]; then
 	_virtualbox="s"
 elif [[ "$_vm" == @(n|N) ]]; then
-	echo -en "${_g}Você está instalando em um notebook?  Didigte S para (Sim) ou N para (Não)${_o}:${_w} "; read _not
+	echo -en "\n${_g}Você está instalando em um notebook?  Didigte S para (Sim) ou N para (Não)${_o}:${_w} "; read _not
 	[[ "$_not" != @(s|S|n|N) ]] && { echo -e "\n${_am}Digite uma opção válida! s/S ou n/N\n${_o}"; exit 1; }
 	if [[ "$_not" == @(s|S) ]]; then
 		_notebook="s"
