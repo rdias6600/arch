@@ -129,6 +129,7 @@ else
 fi
 
 echo "--------------------------------"
+
 echo
 
 if [[ "$_dualboot" == "s" ]]; then
@@ -142,6 +143,8 @@ if [[ "$_notebook" == "s" ]]; then
 else
 	echo -e " ${_g}NOTEBOOK${_o} = NAO"
 fi
+
+echo
 
 echo "==========================================================="
 fdisk -l $_hd
@@ -168,7 +171,7 @@ mkfs.ext4 -F $_root && mount $_root /mnt
 
 # home
 if [[ "$_home" != "" ]]; then
-	echo -e "\n${_g}==> Formatando, Criando e Montando Home${_o}"; sleep 1
+	echo -e "${_g}==> Formatando, Criando e Montando Home${_o}"; sleep 1
 	mkfs.ext4 -F $_home && mkdir /mnt/home && mount $_home /mnt/home	
 fi
 
