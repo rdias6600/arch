@@ -46,7 +46,7 @@ echo -e '# mouse acceleration\nexec --no-startup-id xinput --set-prop 8 'libinpu
 # feh
 mkdir -p ~/Imagens && mkdir -p ~/Imagens/wallpaper
 cd ~/Imagens/wallpaper/
-wget https://raw.githubusercontent.com/leoarch/arch/master/i3/images/three.png
+wget https://raw.githubusercontent.com/leoarch/arch/master/i3/images/three.jpg
 echo -e '# feh\nexec --no-startup-id feh --bg-scale /home/leo/Imagens/wallpaper/matrix-6.png\n' >> ~/.config/i3/config
 
 # window size
