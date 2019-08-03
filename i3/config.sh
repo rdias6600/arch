@@ -7,7 +7,7 @@
 ##############
 
 echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades xorg-xinput
-pacman -S engrampa calc flatpak git go leafpad rofi flameshot transmission-gtk feh --noconfirm
+sudo pacman -S engrampa calc flatpak git go leafpad rofi flameshot transmission-gtk feh --noconfirm
 
 ################
 ### i3config ###
@@ -48,6 +48,9 @@ mkdir -p ~/Imagens && mkdir -p ~/Imagens/wallpaper
 cd ~/Imagens/wallpaper/
 wget https://raw.githubusercontent.com/leoarch/arch/master/i3/images/matrix-6.png
 echo -e '# feh\nexec --no-startup-id feh --bg-scale /home/leo/Imagens/wallpaper/matrix-6.png\n' >> ~/.config/i3/config
+
+# window size
+echo -e '# window size\nfor_window [window_role="GtkFileChooserDialog"] floating enable resize set 800 px 600 px, move position center focusn' >> ~/.config/i3/config
 
 ###########
 ### AUR ###
