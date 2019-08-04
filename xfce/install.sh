@@ -71,7 +71,7 @@ pacman -S thunar-archive-plugin xfce4-mount-plugin xfce4-notifyd xfce4-pulseaudi
 
 # essenciais
 echo -e "${_g}==> Instalando programas essenciais${_o}"; sleep 1
-pacman -S engrampa zip unzip unrar --noconfirm
+pacman -S xarchiver zip unzip unrar --noconfirm
 
 # firefox
 # echo -e "${_g}==> Instalando firefox${_o}"; sleep 1
@@ -124,10 +124,10 @@ echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-01.jpg" > /etc/lightdm/li
 echo -e "${_g}==> Baixando e descompactando temas${_o}"; sleep 1
 cd /home/${_user}
 mkdir .icons && mkdir .themes
-# icons
-cd .icons && wget http://nocw3.com/downloads/icons.tar.gz && tar -zxf icons.tar.gz && rm icons.tar.gz
-# themes
-cd .themes && wget http://nocw3.com/downloads/themes.tar.gz && tar -zxf themes.tar.gz && rm themes.tar.gz
+# Download icons,themes and plank theme
+wget http://download1592.mediafire.com/wryy8afce0bg/v7csy80lkt3dj0c/themes.zip; sleep 2
+wget http://download853.mediafire.com/eib8fnmu605g/tvghvv8nprtgpef/icons.zip; sleep 2
+wget http://download1477.mediafire.com/qqqw4sqz7uzg/9u4xa4m0xx92x5o/plank.zip; sleep 2
 
 # echo -e "${_g}===>Usando dhclient${_o}"; sleep 1
 # echo -e "[main]\ndhcp=dhclient" > /etc/NetworkManager/conf.d/dhclient.conf
