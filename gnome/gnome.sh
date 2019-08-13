@@ -37,9 +37,9 @@ if [[ "$_vm" == "s" ]]; then
 	pacman -S  virtualbox-guest-utils --noconfirm
 fi
 
-# gnome gnome-tweak-tool 
+# gnome
 echo -e "${_g}===> Instalando básico GNOME${_o}"; sleep 1 
-pacman -S gnome-shell nautilus gnome-terminal gnome-control-center gdm --noconfirm
+pacman -S gnome-shell nautilus gnome-terminal gnome-control-center gnome-tweaks gdm --noconfirm
 
 # gnome-extra
 if [[ "$_gextra" == "s" ]]; then
@@ -48,8 +48,8 @@ if [[ "$_gextra" == "s" ]]; then
 fi
 
 # firefox
-echo -e "${_g}===> Instalando firefox${_o}"; sleep 1
-pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
+# echo -e "${_g}===> Instalando firefox${_o}"; sleep 1
+# pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
 
 # rede
 echo -e "${_g}===> Instalando utilitários de rede${_o}"; sleep 1
@@ -58,6 +58,9 @@ pacman -S networkmanager network-manager-applet --noconfirm
 # audio
 echo -e "${_g}===> Instalando utilitários de audio${_o}"; sleep 1
 pacman -S alsa-utils --noconfirm
+
+# utils
+pacman -S chromium vinagre fragments unrar zip unzip gnome-calculator flatpak --noconfirm
 
 # mudar dhcpcd para dhclient (em um caso particular, meu roteador só funcionou com dhclient)
 # echo -e "${_g}===> Configurando dhcp para dhclient${_o}"; sleep 1
