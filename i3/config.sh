@@ -7,7 +7,7 @@
 ##############
 
 echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades xorg-xinput
-sudo pacman -S engrampa calc flatpak git go leafpad rofi flameshot transmission-gtk feh --noconfirm
+sudo pacman -S calc flatpak git go rofi flameshot feh --noconfirm
 
 ################
 ### i3config ###
@@ -16,7 +16,7 @@ sudo pacman -S engrampa calc flatpak git go leafpad rofi flameshot transmission-
 #sed -i 's/status_command i3status/status_command i3blocks/' ~/.config/i3/config
 
 # i3blocks
-#sed -i 's/status_command i3status/status_command i3blocks -c ~\/.config\/i3\/i3blocks\/i3blocks.conf\n\tcolors {\n\t\tseparator #969896\n\t\tbackground #1d1f21\n\t\tstatusline #c5c8c6\n\t\tfocused_workspace #81a2be #81a2be #1d1f21\n\t\tactive_workspace#373b41 #373b41 #ffffff\n\t\tinactive_workspace#282a2e #282a2e #969896\n\t\turgent_workspace#cc6666 #cc6666 #ffffff\n\t}/' ~/.config/i3/config
+# sed -i 's/status_command i3status/status_command i3blocks -c ~\/.config\/i3\/i3blocks\/i3blocks.conf\n\tcolors {\n\t\tseparator #969896\n\t\tbackground #1d1f21\n\t\tstatusline #c5c8c6\n\t\tfocused_workspace #81a2be #81a2be #1d1f21\n\t\tactive_workspace#373b41 #373b41 #ffffff\n\t\tinactive_workspace#282a2e #282a2e #969896\n\t\turgent_workspace#cc6666 #cc6666 #ffffff\n\t}/' ~/.config/i3/config
 
 # sed -i 's/status_command i3status/status_command i3blocks\n\tcolors {\n\t\tseparator #969896\n\t\tbackground #1d1f21\n\t\tstatusline #c5c8c6\n\t\tfocused_workspace #81a2be #81a2be #1d1f21\n\t\tactive_workspace#373b41 #373b41 #ffffff\n\t\tinactive_workspace#282a2e #282a2e #969896\n\t\turgent_workspace#cc6666 #cc6666 #ffffff\n\t}/' ~/.config/i3/config
 
@@ -28,7 +28,7 @@ sudo pacman -S engrampa calc flatpak git go leafpad rofi flameshot transmission-
 echo -e '# gaps\nfor_window [class="^.*"] border pixel 2\ngaps inner 10\ngaps outer 10\n' >> ~/.config/i3/config
 
 # google-chrome
-echo -e '\n\n# chrome\nbindsym $mod+Shift+b exec --no-startup-id google-chrome-stable\nfor_window [class="chrome"] move to workspace $ws2\nassign [class="^chrome"] $ws2\n' >> ~/.config/i3/config
+# echo -e '\n\n# chrome\nbindsym $mod+Shift+b exec --no-startup-id google-chrome-stable\nfor_window [class="chrome"] move to workspace $ws2\nassign [class="^chrome"] $ws2\n' >> ~/.config/i3/config
 
 # flameshot
 mkdir -p ~/Screenshots
@@ -56,17 +56,6 @@ echo -e '# window size\nfor_window [window_role="GtkFileChooserDialog"] floating
 mkdir -p ~/.config/compton && cd ~/.config/compton
 wget https://raw.githubusercontent.com/leoarch/arch/master/i3/config/compton.conf
 echo -e '# compton config\nexec --no-startup-id compton --config /home/leo/.config/compton/compton.conf\n' >> ~/.config/i3/config
-
-###########
-### AUR ###
-###########
-
-sudo pacman -S go --noconfirm
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
-
-yay -S google-chrome --noconfirm
 
 #sudo ln -s /opt/sublime_text/sublime_text /usr/bin/
 #obs
