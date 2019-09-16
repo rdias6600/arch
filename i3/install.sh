@@ -63,8 +63,8 @@ pacman -S i3-gaps i3status --noconfirm
 # pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
 
 # firefox
-echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
-pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
+# echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
+# pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
 
 # audio renove pavucontrol
 echo -e "${_g}==> Instalando audio${_e}"; sleep 1
