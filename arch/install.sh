@@ -26,12 +26,6 @@ cat <<EOL
 			tição Swap, Root e Home (Swap/Home não obrigatórias)
 		
 			Utilizaremos o particionador CFDISK
-			Código das Partições para quem quiser usar GDISK:
-			==> EF02 BIOS
-			==> EF00 EFI
-			==> 8200 SWAP
-			==> 8304 /
-			==> 8302 /home
 			
 			====================================================
 			
@@ -65,7 +59,7 @@ cfdisk $_hd # entrando no particionador cfdisk
 
 tput reset; setterm -cursor off
 
-echo -e "\n${_n} OK, você definiu as partições, caso deseje cancelar, precione${_w}: ${_am}Ctrl+C${_o}"
+echo -e "\n${_n} OK, você definiu as partições, caso deseje cancelar, pressione${_w}: ${_am}Ctrl+C${_o}"
 echo -e "\n${_n} Use os número das partições nas perguntas abaixo${_w}\n"
 
 echo "==========================================================="
