@@ -144,7 +144,7 @@ echo "==========================================================="
 fdisk -l $_hd
 echo "==========================================================="
 
-echo -e "\n Verifique se as informações estão corretas comparando com os dados acima.\n"
+echo -e "\n Verifique se as informações estão corretas comparando com os dados acima."
 echo -ne "\n Se tudo estiver certo, Digite ${_g}s/S${_o} para continuar ou ${_g}n/N${_o} para cancelar: "; read -n 1 comecar
 
 if [[ "$comecar" != @(S|s) ]]; then
