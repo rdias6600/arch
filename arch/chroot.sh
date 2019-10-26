@@ -69,7 +69,7 @@ pacman -Syu --noconfirm
 
 # no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
 echo -e "${_g}==> Instalando dhclient${_o}"
-pacman -S dhclient dhcpcd dialog wget --noconfirm
+pacman -S dhclient dhcpcd dialog wget nano --noconfirm
 
 # grub configuration
 if [[ "$_uefi" != "" ]]; then
@@ -89,7 +89,7 @@ fi
 
 if [[ "$_notebook" == "s" ]]; then
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
-	pacman -S wireless_tools wpa_supplicant acpi acpid --noconfirm # remove the repository (wpa_actiond)
+	pacman -S netctl wireless_tools wpa_supplicant acpi acpid --noconfirm # remove the repository (wpa_actiond)
 fi
 
 echo -e "${_g}==> mkinitcpio${_o}"
