@@ -74,8 +74,12 @@ echo -e "${_g}==> Instalando programas essenciais${_o}"; sleep 1
 pacman -S xarchiver zip unzip unrar --noconfirm
 
 # firefox
-# echo -e "${_g}==> Instalando firefox${_o}"; sleep 1
+# echo -e "${_g}==> Instalando navegador firefox${_o}"; sleep 1
 # pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
+
+# opera
+echo -e "${_g}==> Instalando navegador Opera${_o}"; sleep 1
+pacman -S opera --noconfirm
 
 # audio
 echo -e "${_g}==> Instalando audio${_o}"; sleep 1
