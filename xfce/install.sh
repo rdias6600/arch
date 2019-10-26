@@ -125,13 +125,13 @@ curl -s -o /usr/share/pixmaps/arch-01.jpg 'https://raw.githubusercontent.com/leo
 echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-01.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
 
 # temas e icones
-echo -e "${_g}==> Baixando e descompactando temas${_o}"; sleep 1
-cd /home/${_user}
-mkdir .icons && mkdir .themes
+# echo -e "${_g}==> Baixando e descompactando temas${_o}"; sleep 1
+#cd /home/${_user}
+# mkdir .icons && mkdir .themes
 # Download icons,themes and plank theme
-wget http://download1592.mediafire.com/wryy8afce0bg/v7csy80lkt3dj0c/themes.zip; sleep 2
-wget http://download853.mediafire.com/eib8fnmu605g/tvghvv8nprtgpef/icons.zip; sleep 2
-wget http://download1477.mediafire.com/qqqw4sqz7uzg/9u4xa4m0xx92x5o/plank.zip; sleep 2
+# wget http://download1592.mediafire.com/wryy8afce0bg/v7csy80lkt3dj0c/themes.zip; sleep 2
+# wget http://download853.mediafire.com/eib8fnmu605g/tvghvv8nprtgpef/icons.zip; sleep 2
+# wget http://download1477.mediafire.com/qqqw4sqz7uzg/9u4xa4m0xx92x5o/plank.zip; sleep 2
 
 # echo -e "${_g}===>Usando dhclient${_o}"; sleep 1
 # echo -e "[main]\ndhcp=dhclient" > /etc/NetworkManager/conf.d/dhclient.conf
