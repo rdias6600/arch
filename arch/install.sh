@@ -2,7 +2,7 @@
 
 tput reset
 
-# cores
+# colors
 __Y=$(echo -e "\e[33;1m");__A=$(echo -e "\e[36;1m");__R=$(echo -e "\e[31;1m");__O=$(echo -e "\e[m");
 _n="\e[36;1m";_w="\e[37;1m";_g="\e[32;1m";_am="\e[33;1m";_o="\e[m";_r="\e[31;1m";_p="\e[33;0m";
 
@@ -45,7 +45,7 @@ tput reset
 
 echo
 
-lsblk -l | grep disk # comando para listar os discos
+lsblk -l | grep disk # list disk
 
 echo -e "\n${_g} Logo acima estão listados os seus discos${_o}"
 echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _hd
@@ -53,7 +53,7 @@ _hd="/dev/${_hd}"; export _hd
 
 echo
 
-cfdisk $_hd # entrando no particionador cfdisk
+cfdisk $_hd # start partition with cfdisk
 
 [ $? -ne 0 ] && { echo -e "\n${_r} ATENÇÃO:${_o} Disco ${_am}$_hd${_o} não existe! Execute novamente o script e insira o número corretamente.\n"; exit 1; }
 
@@ -181,7 +181,7 @@ wget "https://raw.githubusercontent.com/leoarch/arch/master/arch/mirrorlist" -O 
 
 # instalando base e base-devel
 echo -e "${_g}==> Instalando base/base-devel${_o}"; sleep 1
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base base-devel linux linux-firmware
 
 # gerando fstab
 echo -e "${_g}==> Gerando FSTAB${_o}"; sleep 1
