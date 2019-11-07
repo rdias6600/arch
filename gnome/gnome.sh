@@ -31,15 +31,19 @@ STI
 # echo -e "${_g}===> Instando XORG${_o}"; sleep 1
 # pacman -S xorg-xinit xorg-server xorg-drivers xf86-input-synaptics xf86-input-libinput --noconfirm
 
+# driver de video intel
+# echo -e "${_g}===> Instando XORG${_o}"; sleep 1
+pacman -S xf86-video-intel --noconfirm
+
 # vm
 if [[ "$_vm" == "s" ]]; then
 	echo -e '${_g}===> Guest Utils para Virtuabox${_o}'; sleep 1
-	pacman -S  virtualbox-guest-utils --noconfirm
+	pacman -S virtualbox-guest-utils --noconfirm
 fi
 
 # gnome
 echo -e "${_g}===> Instalando básico GNOME${_o}"; sleep 1 
-pacman -S gnome-shell nautilus gnome-terminal gnome-control-center gnome-tweaks gdm --noconfirm
+pacman -S gnome-shell gnome-terminal gnome-control-center gnome-tweaks gdm nautilus --noconfirm
 
 # gnome-extra
 if [[ "$_gextra" == "s" ]]; then
@@ -56,11 +60,8 @@ echo -e "${_g}===> Instalando utilitários de rede${_o}"; sleep 1
 pacman -S networkmanager network-manager-applet --noconfirm
 
 # audio
-echo -e "${_g}===> Instalando utilitários de audio${_o}"; sleep 1
-pacman -S alsa-utils --noconfirm
-
-# utils
-pacman -S chromium vinagre fragments unrar zip unzip gnome-calculator flatpak --noconfirm
+echo -e "${_g}===> Instalando utilitários${_o}"; sleep 1
+pacman -S alsa-utils unrar zip unzip gnome-calculator flatpak --noconfirm
 
 # mudar dhcpcd para dhclient (em um caso particular, meu roteador só funcionou com dhclient)
 # echo -e "${_g}===> Configurando dhcp para dhclient${_o}"; sleep 1
