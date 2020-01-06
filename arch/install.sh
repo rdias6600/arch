@@ -48,7 +48,7 @@ echo
 lsblk -l | grep disk # list disk
 
 echo -e "\n${_g} Logo acima estão listados os seus discos${_o}"
-echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _disk
+echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read _disk; export _disk
 _hd="/dev/${_disk}"; export _hd
 
 echo
@@ -176,8 +176,8 @@ if [[ "$_uefi" != "" ]]; then
 fi
 
 # set morrorlist br (opcional)
-# echo -e "${_g}==> Setando mirrorlist${_o}"; sleep 1
-# wget "https://raw.githubusercontent.com/leoarch/arch/master/arch/mirrorlist" -O /etc/pacman.d/mirrorlist 2>/dev/null
+echo -e "${_g}==> Setando mirrorlist${_o}"; sleep 1
+wget "https://raw.githubusercontent.com/leoarch/arch/master/arch/mirrorlist" -O /etc/pacman.d/mirrorlist 2>/dev/null
 
 # instalando base e base-devel
 echo -e "${_g}==> Instalando base/base-devel${_o}"; sleep 1
