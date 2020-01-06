@@ -48,8 +48,8 @@ echo
 lsblk -l | grep disk # list disk
 
 echo -e "\n${_g} Logo acima estão listados os seus discos${_o}"
-echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _hd
-_hd="/dev/${_hd}"; export _hd
+echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _disk
+_hd="/dev/${_disk}"; export _hd
 
 echo
 
@@ -74,10 +74,10 @@ echo -en "\n ${_p}Digite o número da partição${_o} ${_g}RAÍZ /${_o}${_am} (P
 [ "$_root" == "" ] && { echo -e "\n${_am}Atenção:${_o} ${_p}Partição RAÍZ é obrigatória! Execute novamente o script e digite o número correto!\n${_o}"; exit 1; }
 echo -en "\n${_p} Digite o número da partição${_o} ${_g}HOME${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _home
 
-_root="/dev/sda${_root}"; export _root
-[ -n "$_uefi" ] && { _uefi="/dev/sda${_uefi}"; export _uefi; }
-[ -n "$_swap" ] && { _swap="/dev/sda${_swap}"; export _swap; }
-[ -n "$_home" ] && { _home="/dev/sda${_home}"; export _home; }
+_root="/dev/${_disk}${_root}"; export _root
+[ -n "$_uefi" ] && { _uefi="/dev/${_disk}${_uefi}"; export _uefi; }
+[ -n "$_swap" ] && { _swap="/dev/${_disk}${_swap}"; export _swap; }
+[ -n "$_home" ] && { _home="/dev/${_disk}${_home}"; export _home; }
 
 echo
 
