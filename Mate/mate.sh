@@ -2,36 +2,34 @@
 
 # MATE
 
-__A=$(echo -e "\e[34;1m");__O=$(echo -e "\e[m");_g="\e[32;1m";_o="\e[m";_w="\e[37;1m";_am="\e[33;1m";
+__A=$(echo -e "\e[34;1m");__O=$(echo -e "\e[m");_g="\e[32;1m";_e="\e[m";_w="\e[37;1m";_y="\e[33;1m";
 
-[ "$EUID" -ne 0 ] && echo -e "${_am}É necessário rodar o script como root!${_o}\n${_g}Use:${_o} ${_w}sudo ./xfce.sh${_o}" && exit 1
+[ "$EUID" -ne 0 ] && echo -e "${_am}É necessário rodar o script como root!${_e}\n${_g}Use:${_e} ${_w}sudo ./install.sh${_e}" && exit 1
 
-#echo -en "\n${_g}Qual o nome do seu usuário:${_o}${_w} "; read _user
-#echo
-#cat /etc/passwd | grep ${_user} >/dev/null 2>&1
-#[ $? -ne 0 ] && { echo -e "${_am}Usuário não existe! Digite um usuário válido.\n${_o}"; exit 1; }
+echo -en "\n${_g}Qual o nome do seu usuário:${_e}${_w} "; read _user
+echo
+cat /etc/passwd | grep ${_user} >/dev/null 2>&1
+[[ $? -ne 0 ]] && { echo -e "${_am}Usuário não existe! Digite um usuário válido.\n${_e}"; exit 1; }
 
-echo -en "${_g}Você está instalando em uma VM? Didigte S para (Sim) ou N para (Não):${_o}${_w} "; read _vm
-[[ "$_vm" != @(s|S|n|N) ]] && { echo -e "\n${_am}Digite uma opção válida! s/S ou n/N\n${_o}"; exit 1; }
+echo -en "${_g}Você está instalando em uma VM? Didigte S para (Sim) ou N para (Não):${_e}${_w} "; read _vm
+[[ "$_vm" != @(s|S|n|N) ]] && { echo -e "\n${_y}Digite uma opção válida! s/S ou n/N\n${_e}"; exit 1; }
 
 if [[ "$_vm" == @(s|S) ]]; then
 	_virtualbox="s"
 elif [[ "$_vm" == @(n|N) ]]; then
-	echo -en "${_g}Você está instalando em um notebook?  Didigte S para (Sim) ou N para (Não)${_o}:${_w} "; read _not
-	[[ "$_not" != @(s|S|n|N) ]] && { echo -e "\n${_am}Digite uma opção válida! s/S ou n/N\n${_o}"; exit 1; }
-	if [[ "$_not" == @(s|S) ]]; then
+	echo -en "${_g}Você está instalando em um notebook?  Didigte S para (Sim) ou N para (Não)${_e}:${_w} "; read _note
+	[[ "$_note" != @(s|S|n|N) ]] && { echo -e "\n${_y}Digite uma opção válida! s/S ou n/N\n${_e}"; exit 1; }
+	if [[ "$_note" == @(s|S) ]]; then
 		_notebook="s"
 	fi
 fi
 
-echo
-
 tput reset
 
 cat <<STI
- ${__A}===========================
- Iniciando a Instalação MATE
- ===========================${__O}
+${__A}=========================
+Iniciando a Instalação i3
+=========================${__O}
 STI
 
 echo -e "\nVocê está instalando xfce com suporte de drivers para:\n"
@@ -49,7 +47,7 @@ echo -en "\n${_g}Digite s/S para continuar ou n/N para cancelar: ${_o}:${_w} "; 
 
 # xorg
 echo -e "\n${_g}==>Instalando xorg${_o}"; sleep 1
-pacman -S xorg-xinit xorg-server xf86-input-keyboard xf86-input-mouse xf86-video-intel --noconfirm
+pacman -S xorg-xinit xorg-server xf86-video-intel --noconfirm
 
 if [[ "$_notebook" == "s" ]]; then # notebook
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
@@ -88,12 +86,12 @@ echo -e "${_g}==> Criando diretórios${_o}"; sleep 1
 pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
 
 # start MATE
-echo -e "${_g}==> Configurando pra iniciar o xfce${_o}"; sleep 1
-echo 'exec mate-session' > ~/.xinitrc; sleep 1
+echo -e "${_g}==> Configurando pra iniciar o MATE${_e}"; sleep 1
+echo 'exec mate-session' > /home/${_user}/.xinitrc
 
 # keyboard
-echo -e "${_g}==> Setando keymap br abnt2 no ambiente X11${_o}"; sleep 1
-localectl set-x11-keymap br abnt2
+# echo -e "${_g}==> Setando keymap br abnt2 no ambiente X11${_o}"; sleep 1
+# localectl set-x11-keymap br abnt2 << OLD
 echo -e "${_g}==> Criando arquivo de configuração para keyboard br abnt${_o}"; sleep 1
 curl -s -o /etc/X11/xorg.conf.d/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch/master/xfce/config/keyboard'
 
