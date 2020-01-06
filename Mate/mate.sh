@@ -28,7 +28,7 @@ tput reset
 
 cat <<STI
 ${__A}=========================
-Iniciando a Instalação i3
+Iniciando a Instalação MATE
 =========================${__O}
 STI
 
