@@ -68,10 +68,10 @@ echo -e "${_g}==> Instalando programas essenciais${_o}"; sleep 1
 pacman -S sudo gvfs zip unzip unrar --noconfirm
 
 # pessoais
-pacman -S caja-open-terminal caja-wallpaper	engrampa eom mate-calc pluma mate-media mate-power-manager mate-system-monitor --noconfirm
+pacman -S mate-terminal caja-open-terminal caja-wallpaper engrampa eom mate-calc pluma mate-media mate-power-manager mate-system-monitor --noconfirm
 
 # opera
-pacman -S opera --noconfirm
+# pacman -S opera --noconfirm
 
 # audio
 echo -e "${_g}==> Instalando audio${_o}"; sleep 1
