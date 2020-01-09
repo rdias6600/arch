@@ -181,7 +181,7 @@ wget "https://raw.githubusercontent.com/leoarch/arch/master/arch/mirrorlist" -O 
 
 # instalando base e base-devel
 echo -e "${_g}==> Instalando base/base-devel${_o}"; sleep 1
-pacstrap /mnt base base-devel linux-lts linux-firmware
+pacstrap /mnt base base-devel linux linux-firmware
 
 # gerando fstab
 echo -e "${_g}==> Gerando FSTAB${_o}"; sleep 1
