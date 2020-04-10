@@ -172,16 +172,16 @@ fi
 # efi
 if [[ "$_uefi" != "" ]]; then
 	echo -e "${_g}Formatando, Criando e Montando EFI${_o}"; sleep 1
-	mkfs.fat -F32 $_uefi && mkdir /mnt/boot && mount $_uefi /mnt/boot
+	mkfs.vfat -F32 $_uefi && mkdir /mnt/boot && mount $_uefi /mnt/boot
 fi
 
 # set morrorlist br (opcional)
-echo -e "${_g}==> Setando mirrorlist BR${_o}"; sleep 1
-wget "https://raw.githubusercontent.com/leoarch/arch/master/arch/mirrorlist" -O /etc/pacman.d/mirrorlist 2>/dev/null
+# echo -e "${_g}==> Setando mirrorlist BR${_o}"; sleep 1
+# wget "https://raw.githubusercontent.com/leoarch/arch/master/arch/mirrorlist" -O /etc/pacman.d/mirrorlist 2>/dev/null
 
 # instalando base e base-devel
 echo -e "${_g}==> Instalando base/base-devel${_o}"; sleep 1
-pacstrap /mnt base base-devel linux linux-firmware
+pacstrap /mnt base linux linux-firmware
 
 # gerando fstab
 echo -e "${_g}==> Gerando FSTAB${_o}"; sleep 1
