@@ -45,6 +45,13 @@ sed -i 's/# Include \= \/etc\/pacman.d\/mirrorlist/Include \= \/etc\/pacman.d\/m
 echo -e "${_g}==> Gerando Locale${_o}"
 locale-gen
 
+echo -e "${_g}==> Sincronizando a base de dados${_o}"; sleep 1
+pacman -Syu --noconfirm
+
+# no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
+echo -e "${_g}==> Instalando dhclient${_o}"
+pacman -S sudo dialog wget nano --noconfirm # remove dhclient dhcpcd
+
 # password
 echo -e "${_g}==> Criando senha root${_o}"
 passwd << EOF
@@ -60,13 +67,6 @@ $_puser
 $_puser
 EOF
 sleep 0.5
-
-echo -e "${_g}==> Sincronizando a base de dados${_o}"; sleep 1
-pacman -Syu --noconfirm
-
-# no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
-echo -e "${_g}==> Instalando dhclient${_o}"
-pacman -S sudo dialog wget nano --noconfirm # remove dhclient dhcpcd
 
 echo -e "${_g}==> Criando grupo wheel${_o}"; sleep 1
 echo -e "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers
