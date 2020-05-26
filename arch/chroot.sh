@@ -6,9 +6,9 @@
 # ==> Descrição: executa arch-chroot
 
 # variables user and pass root/user
-_user="leo"
-_proot="123"
-_puser="123"
+_user="ramon"
+_proot="6600"
+_puser="6600"
 
 # cores
 _r="\e[31;1m";_w="\e[37;1m";_g="\e[32;1m";_o="\e[m";
@@ -30,8 +30,8 @@ export LANG=pt_BR.UTF-8
 echo -e "${_g}==> Inserindo KEYMAP=br-abnt2 em /etc/vconsole.conf${_o}"; sleep 1
 echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
 
-echo -e "${_g}==> Configurando Horário America/Sao_Paulo${_o}"; sleep 1
-ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && hwclock --systohc --utc
+echo -e "${_g}==> Configurando Horário America/Fortaleza${_o}"; sleep 1
+ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime && hwclock --systohc --utc
 
 echo -e "${_g}==> Inserindo hostname arch em /etc/hostname${_o}"; sleep 1
 echo "arch" > /etc/hostname
