@@ -50,7 +50,7 @@ pacman -Syu --noconfirm
 
 # no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
 echo -e "${_g}==> Instalando dhclient${_o}"
-pacman -S sudo dialog wget nano --noconfirm # remove dhclient dhcpcd
+pacman -S sudo wget nano networkmanager --noconfirm # remove dhclient dhcpcd
 
 # password
 echo -e "${_g}==> Criando senha root${_o}"
