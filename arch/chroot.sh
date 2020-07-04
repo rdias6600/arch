@@ -33,24 +33,20 @@ echo "KEYMAP=br-abnt2" > /etc/vconsole.conf
 echo -e "${_g}==> Configurando Horário America/Fortaleza${_o}"; sleep 1
 ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime && hwclock --systohc --utc
 
-echo -e "${_g}==> Inserindo hostname arch em /etc/hostname${_o}"; sleep 1
-echo "arch" > /etc/hostname
+echo -e "${_g}==> Inserindo hostname Inspiron-7472 em /etc/hostname${_o}"; sleep 1
+echo "Inspiron-7472" > /etc/hostname
 
 echo -e "${_g}==> Inserindo dados em /etc/hosts${_o}"; sleep 1
 echo -e "127.0.0.1\tlocalhost.localdomain\tlocalhost\n::1\tlocalhost.localdomain\tlocalhost\n127.0.1.1\tarch.localdomain\tarch\n" > /etc/hosts
 
-sed -i 's/# \[Multilib\]/\[Multilib\]/' /etc/pacman.conf
-sed -i 's/# Include \= \/etc\/pacman.d\/mirrorlist/Include \= \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
+echo -e "${_g}==> Habilitando Multilib${_o}"; sleep 1
+echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf
+
+echo -e "${_g}==> Criando grupo wheel${_o}"; sleep 1
+echo -e "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers
 
 echo -e "${_g}==> Gerando Locale${_o}"
 locale-gen
-
-echo -e "${_g}==> Sincronizando a base de dados${_o}"; sleep 1
-pacman -Syu --noconfirm
-
-# no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
-echo -e "${_g}==> Instalando dhclient${_o}"
-pacman -S sudo wget nano networkmanager --noconfirm # remove dhclient dhcpcd
 
 # password
 echo -e "${_g}==> Criando senha root${_o}"
@@ -68,18 +64,22 @@ $_puser
 EOF
 sleep 0.5
 
-echo -e "${_g}==> Criando grupo wheel${_o}"; sleep 1
-echo -e "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers
+echo -e "${_g}==> Sincronizando a base de dados${_o}"; sleep 1
+pacman -Syu --noconfirm
+
+# no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
+# echo -e "${_g}==> Instalando dhclient${_o}"
+# pacman -S dialog wget nano --noconfirm # remove dhclient dhcpcd
 
 # grub configuration
 if [[ "$_uefi" != "" ]]; then
 	echo -e "${_g}==> bootctl UEFI mode${_o}"
 	bootctl --path=/boot install
-	echo -e "default arch\ntimeout 3\n" > /boot/loader/loader.conf
+	echo -e "default arch\ntimeout 5\n" > /boot/loader/loader.conf
 	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=${_root} rw\n" > /boot/loader/entries/arch.conf
 else
 	echo -e "${_g}==> Instalando e Configurando o GRUB${_o}"
-	pacman -S grub --noconfirm
+	pacman -S grub intel-ucode --noconfirm
 	# dual boot
 	# [[ "$_dualboot" == "s" ]] && { pacman -S os-prober --noconfirm; }
 	grub-install --target=i386-pc --recheck /dev/${_disk}
@@ -89,7 +89,7 @@ fi
 
 if [[ "$_notebook" == "s" ]]; then
 	echo -e "${_g}==> Instalando drivers para notebook${_o}"; sleep 1
-	pacman -S netctl wireless_tools wpa_supplicant acpi acpid --noconfirm # remove the repository (wpa_actiond)
+	pacman -S networkmanager wireless_tools wpa_supplicant acpi acpid --noconfirm # remove the repository (wpa_actiond)
 fi
 
 echo -e "${_g}==> mkinitcpio${_o}"
