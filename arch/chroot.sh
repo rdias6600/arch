@@ -79,7 +79,7 @@ if [[ "$_uefi" != "" ]]; then
 	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=${_root} rw\n" > /boot/loader/entries/arch.conf
 else
 	echo -e "${_g}==> Instalando e Configurando o GRUB${_o}"
-	pacman -S grub intel-ucode --noconfirm
+	pacman -S grub intel-ucode iwd --noconfirm
 	# dual boot
 	# [[ "$_dualboot" == "s" ]] && { pacman -S os-prober --noconfirm; }
 	grub-install --target=i386-pc --recheck /dev/${_disk}
