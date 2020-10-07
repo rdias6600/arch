@@ -68,8 +68,8 @@ echo -e "${_g}==> Sincronizando a base de dados${_o}"; sleep 1
 pacman -Syu --noconfirm
 
 # no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
-# echo -e "${_g}==> Instalando dhclient${_o}"
-# pacman -S dialog wget nano --noconfirm # remove dhclient dhcpcd
+	 echo -e "${_g}==> Instalando Wi-Fi${_o}"
+	 pacman -S networkmanager wireless_tools wpa_supplicant dialog wget nano --noconfirm # remove dhclient dhcpcd
 
 # grub configuration
 if [[ "$_uefi" != "" ]]; then
@@ -79,7 +79,7 @@ if [[ "$_uefi" != "" ]]; then
 	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=${_root} rw\n" > /boot/loader/entries/arch.conf
 else
 	echo -e "${_g}==> Instalando e Configurando o GRUB${_o}"
-	pacman -S grub intel-ucode iwd --noconfirm
+	pacman -S grub iwd --noconfirm
 	# dual boot
 	# [[ "$_dualboot" == "s" ]] && { pacman -S os-prober --noconfirm; }
 	grub-install --target=i386-pc --recheck /dev/${_disk}
