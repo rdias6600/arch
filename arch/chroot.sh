@@ -68,8 +68,8 @@ echo -e "${_g}==> Sincronizando a base de dados${_o}"; sleep 1
 pacman -Syu --noconfirm
 
 # no meu caso, o dhclient funciona pro meu roteador e dhcpcd não (altere a vontade)
-	 echo -e "${_g}==> Instalando Wi-Fi${_o}"
-	 pacman -S networkmanager wireless_tools wpa_supplicant dialog wget nano --noconfirm # remove dhclient dhcpcd
+	 echo -e "${_g}==> Instalando dhcpcd${_o}"
+	 pacman -S wget nano --noconfirm # remove dhclient dhcpcd
 
 # grub configuration
 if [[ "$_uefi" != "" ]]; then
